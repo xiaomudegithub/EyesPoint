@@ -171,7 +171,7 @@ def login(request):
             response.errorCode = 200
             response.msg = "登录成功"
             response.success = True
-            response.content = {"accesstoken":user.accesstoken}
+            response.content = {"accesstoken":user.accesstoken,"userId":user.id}
             return HttpResponse(json.dumps(response.__dict__)) 
         else:
             response.errorCode = -113
