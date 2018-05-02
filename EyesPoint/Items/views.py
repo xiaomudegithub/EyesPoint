@@ -34,6 +34,7 @@ def unfinishedItems(request):
         response.content = itemArray
         response.msg = "查询成功"
         response.errorCode = 200
+        response.success = True
         return HttpResponse(json.dumps(response.__dict__))
     except ItemModel.DoesNotExist:
         response.errorCode = -202
@@ -50,6 +51,7 @@ def historyItems(request):
     except:
         response.errorCode = -201
         response.msg = "无用户信息"
+        response.success = True
         return HttpResponse(json.dumps(response.__dict__))
     try:
         items = ItemModel.objects.filter(userId=userId,isDelete=False,isFinished=True)
